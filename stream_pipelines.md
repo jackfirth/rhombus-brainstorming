@@ -9,7 +9,7 @@ This RFC proposes adding *stream pipelines* composed of *transducers* and *reduc
 
 Transducers are first-class objects that describe a one-pass, incremental, and synchronous transformation of an ordered sequence of values. Reducers are similar to transducers, but instead of transforming the sequence into a new sequence, a reducer aggregates a sequence into a single result value.
 
-This proposal makes several assumptions:
+The APIs and example code in this proposal make several assumptions:
 
 - A surface syntax that uses traditional function-call notation, not S-expressions.
 - Some form of dot-operator for accessing values on objects.
