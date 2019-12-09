@@ -11,6 +11,14 @@ Transducers are first-class objects that describe a one-pass, incremental, and s
 
 Reducers are similar to transducers, but instead of transforming the sequence into a new sequence, a reducer aggregates a sequence into a single result value.
 
+This proposal makes several assumptions:
+
+- A surface syntax that uses traditional function-call notation, not S-expressions.
+- Some form of dot-operator for accessing values on objects.
+- Keyword arguments.
+
+Stream pipelines can exist without these assumptions, but they provide a clearer starting point and establish basic design constraints.
+
 # Motivation
 [motivation]: #motivation
 
