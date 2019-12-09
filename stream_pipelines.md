@@ -7,7 +7,7 @@
 
 This RFC proposes adding *stream pipelines* composed of *transducers* and *reducers* to Rhombus.
 
-Transducers are first-class objects that describe an *one-pass*, *incremental*, *synchronous* transformation of an ordered sequence of values.
+Transducers are first-class objects that describe a one-pass, incremental, and synchronous transformation of an ordered sequence of values.
 
 Reducers are similar to transducers, but instead of transforming the sequence into a new sequence, a reducer aggregates a sequence into a single result value.
 
