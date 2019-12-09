@@ -37,7 +37,7 @@ widgets.transduce(
     // we want the heaviest widgets
     sorting(w -> w.weight, descending=true),
 
-    // but only the 10 heaviest
+    // but only the 10 heaviest widgets
     taking(10),
 
     // get the prices of the heaviest widgets
