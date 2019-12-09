@@ -7,9 +7,7 @@
 
 This RFC proposes adding *stream pipelines* composed of *transducers* and *reducers* to Rhombus.
 
-Transducers are first-class objects that describe a one-pass, incremental, and synchronous transformation of an ordered sequence of values.
-
-Reducers are similar to transducers, but instead of transforming the sequence into a new sequence, a reducer aggregates a sequence into a single result value.
+Transducers are first-class objects that describe a one-pass, incremental, and synchronous transformation of an ordered sequence of values. Reducers are similar to transducers, but instead of transforming the sequence into a new sequence, a reducer aggregates a sequence into a single result value.
 
 This proposal makes several assumptions:
 
@@ -29,9 +27,7 @@ TODO
 
 A *stream pipeline* is an operation on a sequence that combines zero or more *transducers*, representing *intermediate operations* on the sequence, with a single *reducer* representing a *terminal operation*.
 
-Stream pipelines are constructed using the `transduce` method on sequences.
-
-It accepts zero or more transducers and returns a partially-constructed pipeline, which has a single `into` method that accepts the reducer used as the pipeline's terminal operation and runs the pipeline.
+Stream pipelines are constructed using the `transduce` method on sequences. It accepts zero or more transducers and returns a partially-constructed pipeline, which has an `into` method that accepts the reducer used as the pipeline's terminal operation. Once the `into` method is called, the pipeline is executed. The pipeline's reducer determines the final result value.
 
 ```rhombus
 widgets.transduce(
@@ -51,17 +47,11 @@ widgets.transduce(
   .into(intoSum)
 ```
 
-The functions `filtering`, `sorting`, `taking`, and `mapping` all return transducers.
-
-The `intoSum` constant is a reducer that adds a sequence of numbers together.
+The functions `filtering`, `sorting`, `taking`, and `mapping` all return transducers. The `intoSum` constant is a reducer that adds a sequence of numbers together.
 
 ## Transducers
 
-A *transducer* is an object that describes a way of transforming a sequence.
-
-Such sequence transformations include mapping, filtering, batching, sorting, grouping-by-key, and many others.
-
-Unlike plain functions, the transformations described by transducers have three key properties:
+A *transducer* is an object that describes a way of transforming a sequence. Such sequence transformations include mapping, filtering, batching, sorting, grouping-by-key, and many others. Unlike plain functions, the transformations described by transducers have three key properties:
 
 - They only make *one pass* over the sequence. This ensures that a transducer can be applied to a sequence that is too large to hold in memory.
 
